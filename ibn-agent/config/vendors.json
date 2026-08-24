@@ -1,0 +1,988 @@
+{
+  "arista": {
+    "device_type": "arista_eos",
+    "prompt_hint": "switch Arista EOS (vEOS-lab)",
+    "save_config": "write memory",
+    "port_format": "Ethernet{n}",
+    "commands": {
+      "show_version": "show version",
+      "show_interfaces": "show interfaces status",
+      "show_vlans": "show vlan brief",
+      "show_stp": "show spanning-tree",
+      "show_mac": "show mac address-table",
+      "show_routing": "show ip route",
+      "shutdown_port": [
+        "interface {iface}",
+        "shutdown",
+        "description IBN-DISABLED: {reason}"
+      ],
+      "enable_port": [
+        "interface {iface}",
+        "no shutdown",
+        "no description"
+      ],
+      "set_vlan": [
+        "interface {iface}",
+        "switchport mode access",
+        "switchport access vlan {vlan}"
+      ],
+      "create_vlan": [
+        "vlan {vlan}",
+        "name {name}"
+      ],
+      "delete_vlan": [
+        "no vlan {vlan}"
+      ],
+      "set_trunk": [
+        "interface {iface}",
+        "switchport mode trunk",
+        "switchport trunk allowed vlan {vlans}"
+      ],
+      "stp_priority": [
+        "spanning-tree vlan {vlan} priority {priority}"
+      ],
+      "bpdu_guard": [
+        "interface {iface}",
+        "spanning-tree bpduguard enable"
+      ],
+      "port_mirror": [
+        "monitor session {sid} source {src} both",
+        "monitor session {sid} destination {dst}"
+      ],
+      "lacp": [
+        "interface Port-Channel{pc_id}",
+        "switchport mode trunk",
+        "interface {iface}",
+        "channel-group {pc_id} mode {mode}"
+      ],
+      "acl_create": [
+        "ip access-list {name}"
+      ],
+      "acl_apply": [
+        "interface {iface}",
+        "ip access-group {name} {direction}"
+      ],
+      "save": "write memory"
+    }
+  },
+  "cisco_ios": {
+    "device_type": "cisco_ios",
+    "prompt_hint": "switch Cisco IOS/IOS-XE (Catalyst)",
+    "save_config": "write memory",
+    "port_format": "GigabitEthernet0/{n}",
+    "commands": {
+      "show_version": "show version",
+      "show_interfaces": "show interfaces status",
+      "show_vlans": "show vlan brief",
+      "show_stp": "show spanning-tree",
+      "show_mac": "show mac address-table",
+      "show_routing": "show ip route",
+      "shutdown_port": [
+        "interface {iface}",
+        "shutdown",
+        "description IBN-DISABLED: {reason}"
+      ],
+      "enable_port": [
+        "interface {iface}",
+        "no shutdown",
+        "no description"
+      ],
+      "set_vlan": [
+        "interface {iface}",
+        "switchport mode access",
+        "switchport access vlan {vlan}"
+      ],
+      "create_vlan": [
+        "vlan {vlan}",
+        "name {name}"
+      ],
+      "delete_vlan": [
+        "no vlan {vlan}"
+      ],
+      "set_trunk": [
+        "interface {iface}",
+        "switchport mode trunk",
+        "switchport trunk allowed vlan {vlans}"
+      ],
+      "stp_priority": [
+        "spanning-tree vlan {vlan} priority {priority}"
+      ],
+      "bpdu_guard": [
+        "interface {iface}",
+        "spanning-tree bpduguard enable"
+      ],
+      "port_mirror": [
+        "monitor session {sid} source {src} both",
+        "monitor session {sid} destination {dst}"
+      ],
+      "lacp": [
+        "interface Port-channel{pc_id}",
+        "switchport mode trunk",
+        "interface {iface}",
+        "channel-group {pc_id} mode {mode}"
+      ],
+      "acl_create": [
+        "ip access-list extended {name}"
+      ],
+      "acl_apply": [
+        "interface {iface}",
+        "ip access-group {name} {direction}"
+      ],
+      "save": "write memory"
+    }
+  },
+  "cisco_nxos": {
+    "device_type": "cisco_nxos",
+    "prompt_hint": "switch Cisco NX-OS (Nexus Data Center)",
+    "save_config": "copy running-config startup-config",
+    "port_format": "Ethernet1/{n}",
+    "commands": {
+      "show_version": "show version",
+      "show_interfaces": "show interface status",
+      "show_vlans": "show vlan brief",
+      "show_stp": "show spanning-tree",
+      "show_mac": "show mac address-table",
+      "show_routing": "show ip route",
+      "shutdown_port": [
+        "interface {iface}",
+        "shutdown",
+        "description IBN-DISABLED: {reason}"
+      ],
+      "enable_port": [
+        "interface {iface}",
+        "no shutdown",
+        "no description"
+      ],
+      "set_vlan": [
+        "interface {iface}",
+        "switchport mode access",
+        "switchport access vlan {vlan}"
+      ],
+      "create_vlan": [
+        "vlan {vlan}",
+        "name {name}"
+      ],
+      "delete_vlan": [
+        "no vlan {vlan}"
+      ],
+      "set_trunk": [
+        "interface {iface}",
+        "switchport mode trunk",
+        "switchport trunk allowed vlan {vlans}"
+      ],
+      "stp_priority": [
+        "spanning-tree vlan {vlan} priority {priority}"
+      ],
+      "bpdu_guard": [
+        "interface {iface}",
+        "spanning-tree bpduguard enable"
+      ],
+      "port_mirror": [
+        "monitor session {sid} type local",
+        "source interface {src}",
+        "destination interface {dst}"
+      ],
+      "lacp": [
+        "interface port-channel{pc_id}",
+        "switchport mode trunk",
+        "interface {iface}",
+        "channel-group {pc_id} mode {mode}"
+      ],
+      "acl_create": [
+        "ip access-list {name}"
+      ],
+      "acl_apply": [
+        "interface {iface}",
+        "ip access-group {name} {direction}"
+      ],
+      "save": "copy running-config startup-config"
+    }
+  },
+  "cisco_xr": {
+    "device_type": "cisco_xr",
+    "prompt_hint": "router Cisco IOS-XR (ASR/NCS carrier grade)",
+    "save_config": "commit",
+    "port_format": "GigabitEthernet0/0/0/{n}",
+    "commands": {
+      "show_version": "show version",
+      "show_interfaces": "show interfaces brief",
+      "show_vlans": "show vlan",
+      "show_stp": "show spanning-tree",
+      "show_mac": "show mac-address-table",
+      "show_routing": "show route",
+      "shutdown_port": [
+        "interface {iface}",
+        "shutdown",
+        "description IBN-DISABLED: {reason}"
+      ],
+      "enable_port": [
+        "interface {iface}",
+        "no shutdown"
+      ],
+      "set_vlan": [
+        "interface {iface}",
+        "l2transport"
+      ],
+      "create_vlan": [
+        "vlan {vlan}"
+      ],
+      "delete_vlan": [
+        "no vlan {vlan}"
+      ],
+      "set_trunk": [
+        "interface {iface}",
+        "l2transport"
+      ],
+      "stp_priority": [
+        "spanning-tree vlan {vlan} priority {priority}"
+      ],
+      "bpdu_guard": [
+        "interface {iface}",
+        "spanning-tree bpduguard enable"
+      ],
+      "port_mirror": [
+        "monitor-session {sid}",
+        "source interface {src}",
+        "destination interface {dst}"
+      ],
+      "lacp": [
+        "interface Bundle-Ether{pc_id}",
+        "interface {iface}",
+        "bundle id {pc_id} mode {mode}"
+      ],
+      "acl_create": [
+        "ipv4 access-list {name}"
+      ],
+      "acl_apply": [
+        "interface {iface}",
+        "ipv4 access-group {name} {direction}"
+      ],
+      "save": "commit"
+    }
+  },
+  "juniper": {
+    "device_type": "juniper_junos",
+    "prompt_hint": "switch Juniper JunOS (EX/QFX Series)",
+    "save_config": "commit",
+    "port_format": "ge-0/0/{n}",
+    "commands": {
+      "show_version": "show version",
+      "show_interfaces": "show interfaces terse",
+      "show_vlans": "show vlans",
+      "show_stp": "show spanning-tree bridge",
+      "show_mac": "show ethernet-switching table",
+      "show_routing": "show route",
+      "shutdown_port": [
+        "set interfaces {iface} disable",
+        "set interfaces {iface} description IBN-DISABLED: {reason}"
+      ],
+      "enable_port": [
+        "delete interfaces {iface} disable",
+        "delete interfaces {iface} description"
+      ],
+      "set_vlan": [
+        "set interfaces {iface} unit 0 family ethernet-switching vlan members {vlan}"
+      ],
+      "create_vlan": [
+        "set vlans {name} vlan-id {vlan}"
+      ],
+      "delete_vlan": [
+        "delete vlans {name}"
+      ],
+      "set_trunk": [
+        "set interfaces {iface} unit 0 family ethernet-switching interface-mode trunk"
+      ],
+      "stp_priority": [
+        "set protocols rstp bridge-priority {priority}"
+      ],
+      "bpdu_guard": [
+        "set protocols rstp interface {iface} edge"
+      ],
+      "port_mirror": [
+        "set forwarding-options analyzer {sid} input ingress interface {src}",
+        "set forwarding-options analyzer {sid} output interface {dst}"
+      ],
+      "lacp": [
+        "set interfaces ae{pc_id} aggregated-ether-options lacp {mode}",
+        "set interfaces {iface} ether-options 802.3ad ae{pc_id}"
+      ],
+      "acl_create": [
+        "set firewall family inet filter {name}"
+      ],
+      "acl_apply": [
+        "set interfaces {iface} unit 0 family inet filter {direction} {name}"
+      ],
+      "save": "commit"
+    }
+  },
+  "hp_comware": {
+    "device_type": "hp_comware",
+    "prompt_hint": "switch HP/Aruba Comware (ProCurve/CX Series)",
+    "save_config": "save force",
+    "port_format": "GigabitEthernet1/0/{n}",
+    "commands": {
+      "show_version": "display version",
+      "show_interfaces": "display interface brief",
+      "show_vlans": "display vlan brief",
+      "show_mac": "display mac-address",
+      "show_routing": "display ip routing-table",
+      "shutdown_port": [
+        "interface {iface}",
+        "shutdown",
+        "description IBN-DISABLED: {reason}"
+      ],
+      "enable_port": [
+        "interface {iface}",
+        "undo shutdown",
+        "undo description"
+      ],
+      "set_vlan": [
+        "interface {iface}",
+        "port access vlan {vlan}"
+      ],
+      "create_vlan": [
+        "vlan {vlan}",
+        "name {name}"
+      ],
+      "delete_vlan": [
+        "undo vlan {vlan}"
+      ],
+      "stp_priority": [
+        "stp vlan {vlan} priority {priority}"
+      ],
+      "bpdu_guard": [
+        "interface {iface}",
+        "stp edged-port enable"
+      ],
+      "port_mirror": [
+        "observe-port 1 interface {dst}",
+        "interface {src}",
+        "port mirroring to observe-port 1 both"
+      ],
+      "save": "save force"
+    }
+  },
+  "huawei": {
+    "device_type": "huawei",
+    "prompt_hint": "switch Huawei VRP (CloudEngine/S-Series)",
+    "save_config": "save",
+    "port_format": "GigabitEthernet0/0/{n}",
+    "commands": {
+      "show_version": "display version",
+      "show_interfaces": "display interface brief",
+      "show_vlans": "display vlan summary",
+      "show_mac": "display mac-address",
+      "show_routing": "display ip routing-table",
+      "shutdown_port": [
+        "interface {iface}",
+        "shutdown",
+        "description IBN-DISABLED: {reason}"
+      ],
+      "enable_port": [
+        "interface {iface}",
+        "undo shutdown",
+        "undo description"
+      ],
+      "set_vlan": [
+        "interface {iface}",
+        "port default vlan {vlan}"
+      ],
+      "create_vlan": [
+        "vlan {vlan}",
+        "name {name}"
+      ],
+      "delete_vlan": [
+        "undo vlan {vlan}"
+      ],
+      "stp_priority": [
+        "stp vlan {vlan} priority {priority}"
+      ],
+      "bpdu_guard": [
+        "interface {iface}",
+        "stp edged-port enable"
+      ],
+      "port_mirror": [
+        "observe-port 1 interface {dst}",
+        "interface {src}",
+        "port-mirroring to observe-port 1 inbound"
+      ],
+      "save": "save"
+    }
+  },
+  "extreme_exos": {
+    "device_type": "extreme_exos",
+    "prompt_hint": "switch Extreme Networks EXOS",
+    "save_config": "save configuration",
+    "port_format": "{n}",
+    "commands": {
+      "show_version": "show version",
+      "show_interfaces": "show ports information",
+      "show_vlans": "show vlan",
+      "show_mac": "show fdb",
+      "show_routing": "show iproute",
+      "shutdown_port": [
+        "disable port {iface}"
+      ],
+      "enable_port": [
+        "enable port {iface}"
+      ],
+      "set_vlan": [
+        "configure vlan {vlan} add port {iface} untagged"
+      ],
+      "create_vlan": [
+        "create vlan {name} tag {vlan}"
+      ],
+      "delete_vlan": [
+        "delete vlan {name}"
+      ],
+      "stp_priority": [
+        "configure stpd s0 priority {priority}"
+      ],
+      "bpdu_guard": [
+        "configure stpd s0 ports edge {iface}"
+      ],
+      "port_mirror": [
+        "create mirror {sid} to port {dst}",
+        "configure mirror {sid} add port {src} ingress-and-egress"
+      ],
+      "save": "save configuration"
+    }
+  },
+  "fortinet": {
+    "device_type": "fortinet",
+    "prompt_hint": "switch Fortinet FortiSwitch (integrado con FortiGate)",
+    "save_config": "execute backup config flash",
+    "port_format": "port{n}",
+    "commands": {
+      "show_version": "get system status",
+      "show_interfaces": "get switch interface list",
+      "show_vlans": "show switch vlan",
+      "show_mac": "diagnose switch mac list",
+      "show_routing": "get router info routing-table all",
+      "shutdown_port": [
+        "config switch interface",
+        "edit {iface}",
+        "set status down",
+        "set description IBN-DISABLED: {reason}",
+        "end"
+      ],
+      "enable_port": [
+        "config switch interface",
+        "edit {iface}",
+        "set status up",
+        "unset description",
+        "end"
+      ],
+      "set_vlan": [
+        "config switch interface",
+        "edit {iface}",
+        "set native-vlan {vlan}",
+        "end"
+      ],
+      "create_vlan": [
+        "config switch vlan",
+        "edit {vlan}",
+        "set description {name}",
+        "end"
+      ],
+      "delete_vlan": [
+        "config switch vlan",
+        "delete {vlan}",
+        "end"
+      ],
+      "stp_priority": [
+        "config switch stp settings",
+        "set priority {priority}",
+        "end"
+      ],
+      "bpdu_guard": [
+        "config switch interface",
+        "edit {iface}",
+        "set stp-bpdu-guard enabled",
+        "end"
+      ],
+      "port_mirror": [
+        "config switch mirror",
+        "edit {sid}",
+        "set src {src}",
+        "set dst {dst}",
+        "end"
+      ],
+      "save": "execute backup config flash"
+    }
+  },
+  "dell_os10": {
+    "device_type": "dell_os10",
+    "prompt_hint": "switch Dell OS10 (PowerSwitch Data Center)",
+    "save_config": "copy running-configuration startup-configuration",
+    "port_format": "ethernet1/1/{n}",
+    "commands": {
+      "show_version": "show version",
+      "show_interfaces": "show interface status",
+      "show_vlans": "show vlan",
+      "show_mac": "show mac address-table",
+      "show_routing": "show ip route",
+      "shutdown_port": [
+        "interface {iface}",
+        "shutdown",
+        "description IBN-DISABLED: {reason}"
+      ],
+      "enable_port": [
+        "interface {iface}",
+        "no shutdown",
+        "no description"
+      ],
+      "set_vlan": [
+        "interface {iface}",
+        "switchport mode access",
+        "switchport access vlan {vlan}"
+      ],
+      "create_vlan": [
+        "interface vlan{vlan}",
+        "description {name}"
+      ],
+      "delete_vlan": [
+        "no interface vlan{vlan}"
+      ],
+      "stp_priority": [
+        "spanning-tree vlan {vlan} priority {priority}"
+      ],
+      "bpdu_guard": [
+        "interface {iface}",
+        "spanning-tree bpduguard enable"
+      ],
+      "port_mirror": [
+        "monitor session {sid} source interface {src} both",
+        "monitor session {sid} destination interface {dst}"
+      ],
+      "save": "copy running-configuration startup-configuration"
+    }
+  },
+  "mikrotik": {
+    "device_type": "mikrotik_routeros",
+    "prompt_hint": "switch MikroTik RouterOS (CRS Series muy popular en LATAM)",
+    "save_config": "export file=backup",
+    "port_format": "ether{n}",
+    "commands": {
+      "show_version": "/system resource print",
+      "show_interfaces": "/interface print",
+      "show_vlans": "/interface vlan print",
+      "show_mac": "/ip arp print",
+      "show_routing": "/ip route print",
+      "shutdown_port": [
+        "/interface set {iface} disabled=yes comment=IBN-DISABLED:{reason}"
+      ],
+      "enable_port": [
+        "/interface set {iface} disabled=no comment=\"\""
+      ],
+      "set_vlan": [
+        "/interface vlan add name=vlan{vlan} vlan-id={vlan} interface={iface}"
+      ],
+      "create_vlan": [
+        "/interface vlan add name={name} vlan-id={vlan}"
+      ],
+      "delete_vlan": [
+        "/interface vlan remove [find vlan-id={vlan}]"
+      ],
+      "stp_priority": [
+        "/interface bridge set bridge priority={priority}"
+      ],
+      "bpdu_guard": [
+        "/interface bridge port set [find interface={iface}] bpdu-guard=yes"
+      ],
+      "port_mirror": [
+        "/tool sniffer set interface={src} filter-interface={dst}",
+        "/tool sniffer start"
+      ],
+      "save": "export file=backup"
+    }
+  },
+  "ubiquiti": {
+    "device_type": "linux",
+    "prompt_hint": "switch Ubiquiti UniFi (USW Series oficinas y SMB)",
+    "save_config": "save",
+    "port_format": "{n}",
+    "commands": {
+      "show_version": "info",
+      "show_interfaces": "show interfaces",
+      "show_vlans": "show vlan",
+      "show_mac": "show mac",
+      "show_routing": "show route",
+      "shutdown_port": [
+        "set interfaces ethernet eth{iface} disable",
+        "set interfaces ethernet eth{iface} description IBN-DISABLED:{reason}"
+      ],
+      "enable_port": [
+        "delete interfaces ethernet eth{iface} disable",
+        "delete interfaces ethernet eth{iface} description"
+      ],
+      "set_vlan": [
+        "set interfaces ethernet eth{iface} poe-passthrough disable",
+        "set interfaces ethernet eth{iface} vif {vlan}"
+      ],
+      "create_vlan": [
+        "set interfaces ethernet eth0 vif {vlan} description {name}"
+      ],
+      "delete_vlan": [
+        "delete interfaces ethernet eth0 vif {vlan}"
+      ],
+      "stp_priority": [
+        "set interfaces bridge br0 priority {priority}"
+      ],
+      "bpdu_guard": [
+        "set interfaces ethernet eth{iface} stp-edge"
+      ],
+      "port_mirror": [
+        "set interfaces ethernet eth{iface} mirror eth{dst}"
+      ],
+      "save": "save"
+    }
+  },
+  "paloalto": {
+    "device_type": "paloalto_panos",
+    "prompt_hint": "firewall/switch Palo Alto PAN-OS con capacidades L2/L3",
+    "save_config": "commit",
+    "port_format": "ethernet1/{n}",
+    "commands": {
+      "show_version": "show system info",
+      "show_interfaces": "show interface all",
+      "show_vlans": "show vlan all",
+      "show_mac": "show mac all",
+      "show_routing": "show routing route",
+      "shutdown_port": [
+        "set network interface ethernet {iface} link-state down",
+        "set network interface ethernet {iface} comment IBN-DISABLED:{reason}"
+      ],
+      "enable_port": [
+        "set network interface ethernet {iface} link-state auto"
+      ],
+      "set_vlan": [
+        "set network interface ethernet {iface} layer2 lldp enable yes"
+      ],
+      "create_vlan": [
+        "set network vlan {name} vlan-id {vlan}"
+      ],
+      "delete_vlan": [
+        "delete network vlan {name}"
+      ],
+      "stp_priority": [
+        "set network vlan {name} stp"
+      ],
+      "bpdu_guard": [
+        "set network interface ethernet {iface} layer2"
+      ],
+      "port_mirror": [
+        "set network monitor-interface {src} mirror-of {dst}"
+      ],
+      "save": "commit"
+    }
+  },
+  "nokia": {
+    "device_type": "nokia_sros",
+    "prompt_hint": "router Nokia SR-OS (7750 SR para ISPs y telecomunicaciones)",
+    "save_config": "admin save",
+    "port_format": "1/1/{n}",
+    "commands": {
+      "show_version": "show version",
+      "show_interfaces": "show port",
+      "show_vlans": "show service sap-using",
+      "show_mac": "show fdb",
+      "show_routing": "show router route-table",
+      "shutdown_port": [
+        "configure port {iface} shutdown",
+        "configure port {iface} description IBN-DISABLED:{reason}"
+      ],
+      "enable_port": [
+        "configure port {iface} no shutdown",
+        "configure port {iface} no description"
+      ],
+      "set_vlan": [
+        "configure service vpls {vlan} customer 1 create",
+        "sap {iface}:{vlan} create"
+      ],
+      "create_vlan": [
+        "configure service vpls {vlan} customer 1 create",
+        "description {name}"
+      ],
+      "delete_vlan": [
+        "configure service vpls {vlan} shutdown",
+        "no configure service vpls {vlan}"
+      ],
+      "stp_priority": [
+        "configure service vpls {vlan} stp priority {priority}"
+      ],
+      "bpdu_guard": [
+        "configure service vpls {vlan} stp",
+        "shutdown"
+      ],
+      "port_mirror": [
+        "configure mirror mirror-dest {sid} create",
+        "configure mirror source port {src} egress-ingress create",
+        "no shutdown"
+      ],
+      "save": "admin save"
+    }
+  },
+  "brocade": {
+    "device_type": "brocade_fastiron",
+    "prompt_hint": "switch Brocade/Ruckus ICX (campus networking)",
+    "save_config": "write memory",
+    "port_format": "ethernet 1/1/{n}",
+    "commands": {
+      "show_version": "show version",
+      "show_interfaces": "show interfaces brief",
+      "show_vlans": "show vlan brief",
+      "show_mac": "show mac-address",
+      "show_routing": "show ip route",
+      "shutdown_port": [
+        "interface ethernet 1/1/{iface}",
+        "disable",
+        "port-name IBN-DISABLED:{reason}"
+      ],
+      "enable_port": [
+        "interface ethernet 1/1/{iface}",
+        "enable",
+        "no port-name"
+      ],
+      "set_vlan": [
+        "vlan {vlan}",
+        "untagged ethernet 1/1/{iface}"
+      ],
+      "create_vlan": [
+        "vlan {vlan} name {name}"
+      ],
+      "delete_vlan": [
+        "no vlan {vlan}"
+      ],
+      "stp_priority": [
+        "spanning-tree 802-1w priority {priority}"
+      ],
+      "bpdu_guard": [
+        "interface ethernet 1/1/{iface}",
+        "spanning-tree 802-1w admin-edge-port"
+      ],
+      "port_mirror": [
+        "monitor ethernet 1/1/{src} both ethernet 1/1/{dst}"
+      ],
+      "save": "write memory"
+    }
+  },
+  "ciena": {
+    "device_type": "ciena_saos",
+    "prompt_hint": "switch optico Ciena SAOS (ISPs y carriers de fibra)",
+    "save_config": "configuration save",
+    "port_format": "{n}",
+    "commands": {
+      "show_version": "system show software",
+      "show_interfaces": "port show",
+      "show_vlans": "vlan show",
+      "show_mac": "fdb show",
+      "show_routing": "ip interface show",
+      "shutdown_port": [
+        "port disable port {iface}"
+      ],
+      "enable_port": [
+        "port enable port {iface}"
+      ],
+      "set_vlan": [
+        "vlan add vlan {vlan} port {iface} egress-tagged off"
+      ],
+      "create_vlan": [
+        "vlan create vlan {vlan} name {name}"
+      ],
+      "delete_vlan": [
+        "vlan delete vlan {vlan}"
+      ],
+      "stp_priority": [
+        "rstp set port {iface} priority {priority}"
+      ],
+      "bpdu_guard": [
+        "rstp set port {iface} edge-port on"
+      ],
+      "port_mirror": [
+        "port-mirroring add mirror-port {dst} source-port {src} direction both"
+      ],
+      "save": "configuration save"
+    }
+  },
+  "cumulus": {
+    "device_type": "linux",
+    "prompt_hint": "switch Cumulus Linux (Data Center open networking sobre hardware bare-metal)",
+    "save_config": "net commit",
+    "port_format": "swp{n}",
+    "commands": {
+      "show_version": "net show version",
+      "show_interfaces": "net show interface",
+      "show_vlans": "net show bridge vlan",
+      "show_mac": "net show bridge macs",
+      "show_routing": "net show route",
+      "shutdown_port": [
+        "net add interface {iface} link down",
+        "net add interface {iface} alias IBN-DISABLED:{reason}"
+      ],
+      "enable_port": [
+        "net del interface {iface} link down",
+        "net del interface {iface} alias"
+      ],
+      "set_vlan": [
+        "net add interface {iface} bridge access {vlan}"
+      ],
+      "create_vlan": [
+        "net add vlan {vlan} alias {name}"
+      ],
+      "delete_vlan": [
+        "net del vlan {vlan}"
+      ],
+      "stp_priority": [
+        "net add bridge bridge stp treeprio {priority}"
+      ],
+      "bpdu_guard": [
+        "net add interface {iface} stp bpduguard"
+      ],
+      "port_mirror": [
+        "net add port-mirror session {sid} source {src}",
+        "net add port-mirror session {sid} destination {dst}"
+      ],
+      "save": "net commit"
+    }
+  },
+  "tplink": {
+    "device_type": "cisco_ios",
+    "prompt_hint": "switch TP-Link JetStream managed (SMB y PyMEs)",
+    "save_config": "write",
+    "port_format": "Gi{n}",
+    "commands": {
+      "show_version": "show system-info",
+      "show_interfaces": "show interface status",
+      "show_vlans": "show vlan",
+      "show_mac": "show mac address-table",
+      "show_routing": "show ip route",
+      "shutdown_port": [
+        "interface gigabitEthernet {iface}",
+        "shutdown",
+        "description IBN-DISABLED:{reason}"
+      ],
+      "enable_port": [
+        "interface gigabitEthernet {iface}",
+        "no shutdown",
+        "no description"
+      ],
+      "set_vlan": [
+        "interface gigabitEthernet {iface}",
+        "switchport access vlan {vlan}"
+      ],
+      "create_vlan": [
+        "vlan {vlan}",
+        "name {name}"
+      ],
+      "delete_vlan": [
+        "no vlan {vlan}"
+      ],
+      "stp_priority": [
+        "spanning-tree vlan {vlan} priority {priority}"
+      ],
+      "bpdu_guard": [
+        "interface gigabitEthernet {iface}",
+        "spanning-tree bpduguard enable"
+      ],
+      "port_mirror": [
+        "monitor session {sid} source interface gi{src} both",
+        "monitor session {sid} destination interface gi{dst}"
+      ],
+      "save": "write"
+    }
+  },
+  "netgear": {
+    "device_type": "cisco_ios",
+    "prompt_hint": "switch Netgear M-Series managed (SMB y oficinas)",
+    "save_config": "write memory",
+    "port_format": "{n}/g{n}",
+    "commands": {
+      "show_version": "show version",
+      "show_interfaces": "show interfaces status all",
+      "show_vlans": "show vlan",
+      "show_mac": "show mac-addr-table",
+      "show_routing": "show ip route",
+      "shutdown_port": [
+        "interface {iface}",
+        "shutdown",
+        "description IBN-DISABLED:{reason}"
+      ],
+      "enable_port": [
+        "interface {iface}",
+        "no shutdown",
+        "no description"
+      ],
+      "set_vlan": [
+        "interface {iface}",
+        "switchport access vlan {vlan}"
+      ],
+      "create_vlan": [
+        "vlan database",
+        "vlan {vlan}",
+        "exit"
+      ],
+      "delete_vlan": [
+        "vlan database",
+        "no vlan {vlan}",
+        "exit"
+      ],
+      "stp_priority": [
+        "spanning-tree vlan {vlan} priority {priority}"
+      ],
+      "bpdu_guard": [
+        "interface {iface}",
+        "spanning-tree bpduguard enable"
+      ],
+      "port_mirror": [
+        "monitor session {sid} source interface {src} both",
+        "monitor session {sid} destination interface {dst}"
+      ],
+      "save": "write memory"
+    }
+  },
+  "ruckus": {
+    "device_type": "ruckus_fastiron",
+    "prompt_hint": "switch Ruckus ICX (campus y educacion)",
+    "save_config": "write memory",
+    "port_format": "ethernet 1/1/{n}",
+    "commands": {
+      "show_version": "show version",
+      "show_interfaces": "show interfaces brief",
+      "show_vlans": "show vlan brief",
+      "show_mac": "show mac-address",
+      "show_routing": "show ip route",
+      "shutdown_port": [
+        "interface ethernet 1/1/{iface}",
+        "disable",
+        "port-name IBN-DISABLED:{reason}"
+      ],
+      "enable_port": [
+        "interface ethernet 1/1/{iface}",
+        "enable",
+        "no port-name"
+      ],
+      "set_vlan": [
+        "vlan {vlan}",
+        "untagged ethernet 1/1/{iface}"
+      ],
+      "create_vlan": [
+        "vlan {vlan} name {name}"
+      ],
+      "delete_vlan": [
+        "no vlan {vlan}"
+      ],
+      "stp_priority": [
+        "spanning-tree 802-1w priority {priority}"
+      ],
+      "bpdu_guard": [
+        "interface ethernet 1/1/{iface}",
+        "spanning-tree 802-1w admin-edge-port"
+      ],
+      "port_mirror": [
+        "monitor ethernet 1/1/{src} both ethernet 1/1/{dst}"
+      ],
+      "save": "write memory"
+    }
+  }
+}
